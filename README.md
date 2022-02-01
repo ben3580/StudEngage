@@ -4,9 +4,9 @@ This project will seek to create an iCliker-like tool which allows students to a
 ---
 
 ## Team Info
-- Chris Tang (contact)
+- Chris Tang
 - Ben Liu
 - Shang-Yu Chan
 - Phearak Both Bunna
 - Wayne
-- Sarah Harrison
+- Sarah Harrison (Contact)
