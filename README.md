@@ -9,3 +9,4 @@ This project will seek to create an iCliker-like tool which allows students to a
 - Shang-Yu Chan
 - Phearak Both Bunna
 - Wayne
+- Sarah Harrison
