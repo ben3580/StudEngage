@@ -1,4 +1,4 @@
-package Interface;
+package Server;
 
 public class Classroom {
     
