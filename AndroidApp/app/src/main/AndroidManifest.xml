@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IClikerApp">
         <activity
+            android:name=".CreateQuestion"
+            android:exported="false" />
+        <activity
+            android:name=".Classroom"
+            android:exported="false" />
+        <activity
+            android:name=".ProfessorScreen"
+            android:exported="false" />
+        <activity
             android:name=".User"
             android:exported="false" />
         <activity

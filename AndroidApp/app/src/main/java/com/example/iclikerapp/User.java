@@ -17,7 +17,7 @@ public class User extends AppCompatActivity {
         btn_Instructor = (Button) findViewById(R.id.btn_Instructor);
         // After pressed signUp
         btn_Instructor.setOnClickListener(view -> {
-            Intent intent = new Intent(this, Home.class);
+            Intent intent = new Intent(this, ProfessorScreen.class);
             startActivity(intent);
         });
 
