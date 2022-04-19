@@ -1,0 +1,8 @@
+tasks:
+  - init: |
+      gp init
+      sdkman-init.sh
+      ./gradlew build
+    
+
+
