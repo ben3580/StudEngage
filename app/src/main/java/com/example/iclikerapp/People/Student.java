@@ -1,4 +1,4 @@
-package People;
+package com.example.iclikerapp.People;
 
 public class Student extends User {
 

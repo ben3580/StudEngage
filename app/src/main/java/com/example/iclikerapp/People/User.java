@@ -1,7 +1,7 @@
-package People;
+package com.example.iclikerapp.People;
 
 import java.util.regex.Pattern;
-import Server.Classroom;
+import com.example.iclikerapp.Server.Classroom;
 
 public class User {
 
