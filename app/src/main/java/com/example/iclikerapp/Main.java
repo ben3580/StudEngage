@@ -1,4 +1,6 @@
-import People.*;
+package com.example.iclikerapp;
+
+import com.example.iclikerapp.People.*;
 
 public class Main {
     public static void main(String[] args) {
