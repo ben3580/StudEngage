@@ -1,6 +1,8 @@
 tasks:
   - init: |
-      gp init
+      echo 'init script'
+    command: |
+      echo 'start script
       sdkman-init.sh
       ./gradlew build
     
