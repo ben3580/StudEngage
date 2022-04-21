@@ -1,17 +1,34 @@
 package com.example.iclikerapp.People;
 
+import com.example.iclikerapp.Interface.MultipleChoice;
 import com.example.iclikerapp.Interface.Question;
+import com.example.iclikerapp.Interface.ShortAnswer;
+import com.example.iclikerapp.Server.Classroom;
 
 public class Professor extends User {
-    
-    //TODO: waiting for Question.java
-    public Question createMultipleChoice(){
-        return null;
+
+    public Professor(String username, String password){
+        super(username, password);
     }
 
-    //TODO: wait for other classes, should replace <Question> with class <ShortAnswer> after ShortAnswer is created
-    public Question createShortAnswer(){
-        return null;
+    public MultipleChoice createMultipleChoice(int weight, String questionText, String[] choiceText, String rightAnswer){
+        return new MultipleChoice(weight, questionText, choiceText, rightAnswer);
+    }
+
+    public ShortAnswer createShortAnswer(int weight, String questionText, String rightAnswer){
+        return new ShortAnswer(weight, questionText, rightAnswer);
+    }
+
+    @Override
+    public void joinClassroom(Classroom classroom) {
+        classroom.admitProfessor(this);
+        joinedClassroom = classroom;
+    }
+
+    @Override
+    public void exitClassroom(Classroom classroom) {
+        classroom.removeProfessor(this);
+        joinedClassroom = null;
     }
 
     //TODO: waiting for Question.java

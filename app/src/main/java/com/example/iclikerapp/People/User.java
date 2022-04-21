@@ -3,21 +3,19 @@ package com.example.iclikerapp.People;
 import java.util.regex.Pattern;
 import com.example.iclikerapp.Server.Classroom;
 
-public class User {
+public abstract class User {
 
 
-    private String name;
-    private String username;
-    private String password;
-    private String email;
-    private Classroom classroom;
-
-    public User(){
-
-    }
+    protected String name;
+    protected String username;
+    protected String password;
+    protected String email;
+    protected Classroom joinedClassroom;
 
     public User(String username, String password) {
         createAccount(username, password);
+        this.email = null;
+        this.joinedClassroom = null;
     }
 
     public void createAccount(String username, String password){
@@ -30,13 +28,9 @@ public class User {
     }
 
     // TODO: need to wait until classroom class is finished 
-    public boolean joinClassroom(Classroom classroom){
-        return false;
-    }
+    public abstract void joinClassroom(Classroom classroom);
 
-    public void exitClassroom(){
-        this.classroom = null;
-    }
+    public abstract void exitClassroom(Classroom classroom);
 
     public String getUsername(){
         return this.username;
@@ -54,7 +48,7 @@ public class User {
         if(validPassword(password)) this.password = password;
     }
 
-    // return if the password fullfill the requirements
+    // return if the password fulfill the requirements
     private boolean validPassword(String password){
         Boolean validPassword = true;
         String outputString = "";
@@ -71,18 +65,18 @@ public class User {
             validPassword = false;
         }
         if(!uppercasePattern.matcher(password).find()) {
-            outputString = "The password required at least one lowercaser Letter";
+            outputString = "The password required at least one lowercase Letter";
             validPassword = false;
         }
         if(!lowercasePattern.matcher(password).find()) {
-            outputString = "The password required at least one CAPTIACL LETTER";
+            outputString = "The password required at least one CAPITAL LETTER";
             validPassword = false;
         }
         if(validPassword) {
-            outputString = "Password set suceessfully";
+            outputString = "Password set successfully";
         }
 
-        // TODO: System.out.println() should be replace by some other thing
+        // TODO: System.out.println() should be replaced by UI
         System.out.println(outputString);
 
         return validPassword;
