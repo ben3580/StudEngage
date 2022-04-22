@@ -1,5 +1,13 @@
 # StudEngage
-This project will seek to create an iCliker-like tool which allows students to answer questions or polls provided by the instructor. It will be either be an android app or web-based
+This project will seek to create an iCliker-like tool which allows students to answer questions or polls provided by the instructor. It will implemented as an Android app, developed in Android Studio.
+
+---
+
+## Features
+- Login to account using username and password
+- Professor can create multiple choice and short answer questions. Questions are automatically graded.
+- Students can answer questions and check their grades
+- Communication done through a SQL server
 
 ---
 
