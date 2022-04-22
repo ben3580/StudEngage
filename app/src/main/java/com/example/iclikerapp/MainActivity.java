@@ -1,6 +1,10 @@
+package com.example.iclikerapp;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
