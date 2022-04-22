@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import com.example.iclikerapp.People.*;
 import com.example.iclikerapp.Interface.*;
+
 public class Classroom {
 
     private ArrayList<Professor> professors;
@@ -11,12 +12,14 @@ public class Classroom {
     // May defer to SQL server
     private ArrayList<Question> questions;
     private HashMap<Student, String> questionRecord;
+    private Question activeQuestion;
 
     public Classroom(){
         this.professors = new ArrayList<Professor>();
         this.students = new ArrayList<Student>();
         this.questions = new ArrayList<Question>();
         this.questionRecord = new HashMap<Student, String>();
+        this.activeQuestion = null;
     }
 
     public void admitStudent(Student student){
@@ -33,5 +36,13 @@ public class Classroom {
 
     public void removeProfessor(Professor professor){
         professors.remove(professor);
+    }
+
+    public void setActiveQuestion(Question question){
+        this.activeQuestion = question;
+    }
+
+    public Question getActiveQuestion(){
+        return activeQuestion;
     }
 }
