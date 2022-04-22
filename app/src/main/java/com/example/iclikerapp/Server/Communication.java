@@ -8,8 +8,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Communication {
+
+    public Communication(){
+
+    }
     
-    public Connection connectionclass(){
+    public Connection getConnection(){
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         Connection connection = null;

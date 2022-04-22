@@ -30,13 +30,7 @@ public class Student extends User {
         return;
     }
 
-    public void answerShortAnswer(String answer){
-
-    }
-    //TODO: wait for other classes
-    public void answerPoll(String answer){
-
-    }
+    public void answerShortAnswer(String answer){ }
 
     public void setGrade(double grade){
         this.grade = grade;

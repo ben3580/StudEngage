@@ -31,14 +31,11 @@ public class Professor extends User {
         joinedClassroom = null;
     }
 
-    //TODO: waiting for Server
     public void startQuestion(Question question){
-
+        joinedClassroom.setActiveQuestion(question);
     }
 
-    // this function is different from our milestone 5, because I think also need the parameter to know which question to end
-    //TODO: waiting for Server
     public void endQuestion(Question question){
-
+        joinedClassroom.setActiveQuestion(null);
     }
 }

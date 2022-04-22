@@ -5,7 +5,6 @@ import com.example.iclikerapp.Server.Classroom;
 
 public abstract class User {
 
-
     protected String name;
     protected String username;
     protected String password;
@@ -27,7 +26,6 @@ public abstract class User {
         return this.username.equals(username) && this.password.equals(password);
     }
 
-    // TODO: need to wait until classroom class is finished 
     public abstract void joinClassroom(Classroom classroom);
 
     public abstract void exitClassroom(Classroom classroom);
