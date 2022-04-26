@@ -13,16 +13,17 @@ public class User extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
+        // Function of "I'm an instructor" button
         Button btn_Instructor = (Button) findViewById(R.id.btn_Instructor);
-        // After pressed signUp
+        // After pressed the button, we take user to ProfessorScreen
         btn_Instructor.setOnClickListener(view -> {
             Intent intent = new Intent(this, ProfessorScreen.class);
             startActivity(intent);
         });
 
-
+        // Function of "I'm a student" button
         Button btn_Student = (Button) findViewById(R.id.btn_Student);
-        // After pressed signUp
+        // After pressed the button, we take user to StudentScreen
         btn_Student.setOnClickListener(view -> {
             Intent intent = new Intent(this, StudentScreen.class);
             startActivity(intent);

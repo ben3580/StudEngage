@@ -11,61 +11,47 @@ import android.widget.Toast;
 
 import com.example.iclikerapp.Server.Login;
 
+import java.util.Locale;
+
 public class SignUp extends AppCompatActivity {
+    // Initialization
     TextView btn_signIn;
-    EditText new_username, new_password;
+    String new_username, new_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-
         // Function of signUp button
         Button btn_createAcc = (Button) findViewById(R.id.btn_createAcc);
-        // After pressed signUp
+        // After the create account button has been pressed
         btn_createAcc.setOnClickListener(view -> {
-            new_username = (EditText) findViewById(R.id.create_Email);
-            new_password = (EditText) findViewById(R.id.create_Pw);
+            new_username = ((EditText) findViewById(R.id.create_Email)).getText().toString();
+            new_password = ((EditText) findViewById(R.id.create_Pw)).getText().toString();
 
-            //Toast.makeText(this, "Created successfully!", Toast.LENGTH_LONG).show();
-            Toast.makeText(this, new_username.getText().toString() + " created!", Toast.LENGTH_LONG).show();
+            // Convert the input email into lowercase to make it convenient for user
+            String email = new_username.toLowerCase();
+            String pw = new_password;
+
+            // Store email and password using Bundle (with keys that mapped to them)
             Intent intent = new Intent(this, Home.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("email", email);
+            bundle.putString("password", pw);
+            intent.putExtras(bundle);
+            SignUp.this.finish();
             startActivity(intent);
 
+            // Show the name of the user that has been created
+            Toast.makeText(this, new_username + " created!", Toast.LENGTH_LONG).show();
         });
 
-        updateUser();
-
+        // Function of Sign in button (go back to Home screen)
         btn_signIn = (TextView) findViewById(R.id.click_signIn);
         btn_signIn.setOnClickListener(view -> {
             Intent intent = new Intent(this, Home.class);
             startActivity(intent);
         });
     }
-        // Error when try to do this (Not sure why...)
-
-    //String email = new_username.getText().toString();
-    //String pw = new_password.getText().toString();
-    private void updateUser(){
-        // Store email and password using Bundle
-        Intent intent = new Intent(this, Home.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("email", "admin");
-        bundle.putString("password", "123");
-        intent.putExtras(bundle);
-        //startActivity(intent);
-    }
-
-
-    /*public EditText get_user(){
-        EditText username = new_username;
-        return username;
-    }
-
-    public EditText get_password(){
-        EditText password = new_password;
-        return password;
-    }
-*/
 }

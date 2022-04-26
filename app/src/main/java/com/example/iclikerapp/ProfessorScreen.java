@@ -4,41 +4,37 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 public class ProfessorScreen extends AppCompatActivity {
-
-    private Button button;
-    private Button button1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_professor_screen);
-        button = (Button) findViewById(R.id.button_classroom);
-        button.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                OpenCreate_classroom();
-            }
+        // Function of create class button
+        Button btn_createClass = (Button) findViewById(R.id.button_classroom);
+        btn_createClass.setOnClickListener(view -> {
+            OpenCreate_classroom();
         });
-        button1 = (Button) findViewById(R.id.button_question);
-        button1.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                OpenCreate_question();
-            }
+
+        // Function of create question button
+        Button btn_createQuestion = (Button) findViewById(R.id.button_question);
+        btn_createQuestion.setOnClickListener(view -> {
+            OpenCreate_question();
         });
     }
+    // After create class button is pressed, go to Classroom activity
+    public void OpenCreate_classroom()
+    {
+        Intent intent = new Intent(this, CreateClassroom.class);
+        startActivity(intent);
+    }
+
+    // After create question button is pressed, go to Question activity
     public void OpenCreate_question()
     {
         Intent intent = new Intent(this, CreateQuestion.class);
-        startActivity(intent);
-    }
-    public void OpenCreate_classroom()
-    {
-        Intent intent = new Intent(this, Classroom.class);
         startActivity(intent);
     }
 }

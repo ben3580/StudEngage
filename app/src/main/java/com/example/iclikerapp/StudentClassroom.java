@@ -8,9 +8,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class StudentClassroom extends AppCompatActivity {
+// This is for testing purposes of showing multiple questions along with choices to the screen
+// Later on we will get the questions and choices from our database (that are entered by instructor)
 
-    private QuestionLib myQuestionLib = new QuestionLib();
+public class StudentClassroom extends AppCompatActivity {
+    // Create myQuestionLib object (from QuestionLib class)
+    private final QuestionLib myQuestionLib = new QuestionLib();
 
     // Initializing the text views and all the buttons in Student classroom
     private TextView scoreView;
@@ -28,27 +31,25 @@ public class StudentClassroom extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_classroom);
 
+        // Get the textView and Button by their IDs
         scoreView = (TextView) findViewById(R.id.score);
         questionView = (TextView) findViewById(R.id.question);
         btn_choice1 = (Button) findViewById(R.id.choice1);
         btn_choice2 = (Button) findViewById(R.id.choice2);
         btn_choice3 = (Button) findViewById(R.id.choice3);
-        // We update the question (show to the screen)
-
+        // We update the question (show questions the screen)
         updateQuestion();
 
         // When pressed 1st choice button
         btn_choice1.setOnClickListener(view -> {
-            // If the answer is correct we go to the next question
-            // and update score
+            // If the answer is correct we go to the next question and update the score
             if (btn_choice1.getText() == answer){
                 score += 1;
                 Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
                 updateScore(score);
                 updateQuestion();
             }
-            // If the answer is incorrect we also go to the next question
-            // but we do not update the score
+            // If the answer is incorrect we also go to the next question but we do not update the score
             else{
                 Toast.makeText(this, "Incorrect :(", Toast.LENGTH_SHORT).show();
                 updateQuestion();
@@ -57,16 +58,14 @@ public class StudentClassroom extends AppCompatActivity {
 
         // When pressed 2nd choice button
         btn_choice2.setOnClickListener(view -> {
-            // If the answer is correct we go to the next question
-            // and update score
+            // If the answer is correct we go to the next question and update score
             if (btn_choice2.getText() == answer){
                 score += 1;
                 Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
                 updateScore(score);
                 updateQuestion();
             }
-            // If the answer is incorrect we also go to the next question
-            // but we do not update the score
+            // If the answer is incorrect we also go to the next question but we do not update the score
             else{
                 Toast.makeText(this, "Incorrect :(", Toast.LENGTH_SHORT).show();
                 updateQuestion();
@@ -75,16 +74,14 @@ public class StudentClassroom extends AppCompatActivity {
 
         // When pressed 3rd choice button
         btn_choice3.setOnClickListener(view -> {
-            // If the answer is correct we go to the next question
-            // and update score
+            // If the answer is correct we go to the next question and update score
             if (btn_choice3.getText() == answer){
                 score += 1;
                 Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
                 updateScore(score);
                 updateQuestion();
             }
-            // If the answer is incorrect we also go to the next question
-            // but we do not update the score
+            // If the answer is incorrect we also go to the next question but we do not update the score
             else{
                 Toast.makeText(this, "Incorrect :(", Toast.LENGTH_SHORT).show();
                 updateQuestion();
