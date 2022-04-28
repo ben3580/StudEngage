@@ -12,8 +12,6 @@ import android.widget.Toast;
 
 /* Our 1st screen after the splash screen
    This is where the login happens and user can also choose to create a new account
-   Currently, user can only click login if they've created an account
-   (app will crash if user try to login when they haven't created an account)
  */
 
 public class Home extends AppCompatActivity {
@@ -21,6 +19,7 @@ public class Home extends AppCompatActivity {
     // Get username and password in string format
     String username;
     String password;
+
     // Click forgot password (to reset)
     TextView btn_forgotPw;
     // Sign up button
@@ -38,28 +37,32 @@ public class Home extends AppCompatActivity {
             username = ((EditText)findViewById(R.id.enter_email)).getText().toString().toLowerCase();
             password = ((EditText) findViewById(R.id.enter_password)).getText().toString();
             // Use Bundle to get data from another activity
-            Bundle bundle = getIntent().getExtras();
+            // Try & Catch will prevent app from crashing when try to login without registering
+            try {
+                Bundle bundle = getIntent().getExtras();
+                // Get email and password from SignUp activity using Bundle
+                String email = bundle.getString("email");
+                String pw = bundle.getString("password");
 
-            // Get email and password from SignUp activity using Bundle
-            String email = bundle.getString("email");
-            String pw = bundle.getString("password");
+                // Tell user that they cannot have empty username or password
+                if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
+                    Toast.makeText(this, "Email and password can't be empty", Toast.LENGTH_LONG).show();
+                }
 
-            // Tell user that they cannot have empty username or password
-            if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
-                Toast.makeText(this, "Email and password can't be empty", Toast.LENGTH_LONG).show();
+                // Show message telling the user they logged in successfully
+                // Can login only if match with sign up data
+                else if (username.equals(email) && password.equals(pw)) {
+                    Toast.makeText(this, username + " login successfully", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(this, User.class);
+                    startActivity(intent);
+                }
+                // Show error message if username/password is incorrect
+                else {
+                    Toast.makeText(this, "INVALID credentials", Toast.LENGTH_LONG).show();
+                }
             }
-
-            // Show message telling the user they logged in successfully
-            // Can login only if match with sign up data
-            else if (username.equals(email) && password.equals(pw)) {
-                Toast.makeText(this, username + " login successfully", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(this, User.class);
-                startActivity(intent);
-            }
-
-            // Show error message if username/password is incorrect
-            else {
-                Toast.makeText(this, "INVALID credentials", Toast.LENGTH_LONG).show();
+            catch (Exception e){
+                Toast.makeText(this, "User must register first", Toast.LENGTH_LONG).show();
             }
         });
 
