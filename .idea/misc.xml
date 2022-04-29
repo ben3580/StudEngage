@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Both/Documents/github/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3255" />
+        <entry key="..\:/Users/Both/Documents/github/app/src/main/res/drawable/acc1.xml" value="0.3255" />
+        <entry key="..\:/Users/Both/Documents/github/app/src/main/res/drawable/acc2.xml" value="0.3255" />
+        <entry key="..\:/Users/Both/Documents/github/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3255" />
+        <entry key="..\:/Users/Both/Documents/github/app/src/main/res/drawable/ic_svg_20220417_134802_0000.xml" value="0.3255" />
+        <entry key="..\:/Users/Both/Documents/github/app/src/main/res/drawable/mail.xml" value="0.3255" />
+        <entry key="..\:/Users/Both/Documents/github/app/src/main/res/layout/activity_add_more_qas.xml" value="0.24954710144927536" />
         <entry key="..\:/Users/Both/Documents/github/app/src/main/res/layout/activity_classroom.xml" value="0.25" />
         <entry key="..\:/Users/Both/Documents/github/app/src/main/res/layout/activity_create_classroom.xml" value="0.25" />
         <entry key="..\:/Users/Both/Documents/github/app/src/main/res/layout/activity_create_question.xml" value="0.25" />
@@ -15,7 +22,10 @@
         <entry key="..\:/Users/Both/Documents/github/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
         <entry key="..\:/Users/Both/Documents/github/app/src/main/res/layout/activity_student_classroom.xml" value="0.3625" />
         <entry key="..\:/Users/Both/Documents/github/app/src/main/res/layout/activity_student_screen.xml" value="0.25" />
+        <entry key="..\:/Users/Both/Documents/github/app/src/main/res/layout/activity_testing_view.xml" value="0.264" />
         <entry key="..\:/Users/Both/Documents/github/app/src/main/res/layout/activity_user.xml" value="0.3625" />
+        <entry key="..\:/Users/Both/Documents/github/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3255" />
+        <entry key="..\:/Users/Both/Documents/github/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3255" />
         <entry key="..\:/Users/Phearakboth's/AndroidStudioProjects/IClikerApp/app/src/main/res/layout/activity_home.xml" value="0.3265625" />
         <entry key="..\:/Users/Phearakboth's/AndroidStudioProjects/IClikerApp/app/src/main/res/layout/activity_main.xml" value="0.3265625" />
         <entry key="..\:/Users/Phearakboth's/AndroidStudioProjects/IClikerApp/app/src/main/res/layout/activity_sign_up.xml" value="0.3265625" />
