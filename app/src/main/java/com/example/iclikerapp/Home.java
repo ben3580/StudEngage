@@ -52,34 +52,36 @@ public class Home extends AppCompatActivity {
                 String email = bundle.getString("email");
                 String pw = bundle.getString("password");
 
-                Communication home = new Communication();
-                Connection homeCon = home.getConnection();
-                String checkPassword = "";
-                String error = "";
-
-                try{
-                    if(homeCon == null){
-                        System.out.println("Check Connection");
-                    }
-                    else{
-                        String query = "SELECT user_password FROM tblUser WHERE user_email = " + username;
-                        Statement stmt = homeCon.createStatement();
-                        ResultSet rs = stmt.executeQuery(query);
-
-                        if(rs.next()){
-                            //the variable to compare
-                            checkPassword = rs.getString("user_password");
-                        }
-                        else{
-                            error = "invalid query";
-                        }
-
-                        homeCon.close();
-                    }
-                }catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                    Log.d("sql error", error);
-                }
+//                Communication home = new Communication();
+//                Connection homeCon = home.getConnection();
+//                String checkPassword = "";
+//                String error = "";
+//
+//                try{
+//                    if(homeCon == null){
+//                        System.out.println("Check Connection");
+//                    }
+//                    else{
+//                        String query = "SELECT user_password FROM tblUser WHERE user_email = " + username;
+//                        Statement stmt = homeCon.createStatement();
+//                        ResultSet rs = stmt.executeQuery(query);
+//
+//                        if(rs.next()){
+//                            //the variable to compare
+//                            checkPassword = rs.getString("user_password");
+//                            System.out.printf(checkPassword);
+//                            //Toast.makeText(this, checkPassword, Toast.LENGTH_SHORT).show();
+//                        }
+//                        else{
+//                            error = "invalid query";
+//                        }
+//
+//                        homeCon.close();
+//                    }
+//                }catch (SQLException throwables) {
+//                    throwables.printStackTrace();
+//                    Log.d("sql error", error);
+//                }
 
                 // Tell user that they cannot have empty username or password
                 if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {

@@ -9,6 +9,7 @@ public class ShortAnswer extends Question{
         this.rightAnswer = rightAnswer;
     }
 
+
     // TODO: Connect to UI
     public void display(){
 
