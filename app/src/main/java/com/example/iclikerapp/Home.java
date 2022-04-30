@@ -5,10 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.iclikerapp.Server.Communication;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /* Our 1st screen after the splash screen
    This is where the login happens and user can also choose to create a new account
@@ -43,6 +51,35 @@ public class Home extends AppCompatActivity {
                 // Get email and password from SignUp activity using Bundle
                 String email = bundle.getString("email");
                 String pw = bundle.getString("password");
+
+                Communication home = new Communication();
+                Connection homeCon = home.getConnection();
+                String checkPassword = "";
+                String error = "";
+
+                try{
+                    if(homeCon == null){
+                        System.out.println("Check Connection");
+                    }
+                    else{
+                        String query = "SELECT user_password FROM tblUser WHERE user_email = " + username;
+                        Statement stmt = homeCon.createStatement();
+                        ResultSet rs = stmt.executeQuery(query);
+
+                        if(rs.next()){
+                            //the variable to compare
+                            checkPassword = rs.getString("user_password");
+                        }
+                        else{
+                            error = "invalid query";
+                        }
+
+                        homeCon.close();
+                    }
+                }catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                    Log.d("sql error", error);
+                }
 
                 // Tell user that they cannot have empty username or password
                 if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
@@ -79,5 +116,5 @@ public class Home extends AppCompatActivity {
             Intent intent = new Intent(this, SignUp.class);
             startActivity(intent);
         });
-    }
+    };
 }

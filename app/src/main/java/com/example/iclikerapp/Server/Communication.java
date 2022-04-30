@@ -20,7 +20,7 @@ public class Communication {
         String ConnectionURL = null;
         try{
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
-            ConnectionURL = "jdbc:jtds:sqlserver://studengage.database.windows.net:1433;DatabaseName=StudEngage;user=studengage@studengage;password=WSUpullman123;encrypt=true;trustServerCertificate=false;hostNameInCertificate=.database.windows.net;loginTimeout=30;ssl=request";
+            ConnectionURL = "jdbc:jtds:sqlserver://studengage.database.windows.net:1433;DatabaseName=StudEngage;user=studengage@studengage;password=WSUpullman123*;encrypt=true;trustServerCertificate=false;hostNameInCertificate=.database.windows.net;loginTimeout=30;ssl=request";
             connection = DriverManager.getConnection(ConnectionURL);
         } catch (ClassNotFoundException e) {
             Log.e("error here 1 : ", e.getMessage());
