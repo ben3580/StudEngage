@@ -17,7 +17,7 @@ public class User extends AppCompatActivity {
         Button btn_Instructor = (Button) findViewById(R.id.btn_Instructor);
         // After pressed the button, we take user to ProfessorScreen
         btn_Instructor.setOnClickListener(view -> {
-            Intent intent = new Intent(this, ProfessorScreen.class);
+            Intent intent = new Intent(this, InstructorScreen.class);
             startActivity(intent);
         });
 

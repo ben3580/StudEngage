@@ -15,19 +15,47 @@
         android:layout_marginEnd="119dp"
         android:text="Code Generated"
         android:textColor="#673AB7"
-        android:textSize="24sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/view_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="186dp"
-        android:layout_marginBottom="475dp"
-        android:text="Code#" />
+        android:layout_marginEnd="164dp"
+        android:layout_marginBottom="476dp"
+        android:text="Code#"
+        android:textColor="#3F51B5"
+        android:textSize="34sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="304dp"
+        android:text="Use this code to Enter classroom"
+        android:textAlignment="center"
+        android:textColor="#9C27B0"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/btn_testCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="127dp"
+        android:layout_marginBottom="217dp"
+        android:text="Test the code"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>
