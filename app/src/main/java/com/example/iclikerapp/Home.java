@@ -11,8 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.iclikerapp.Server.Communication;
 
+import com.example.iclikerapp.Server.Communication;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +25,7 @@ import java.sql.Statement;
 public class Home extends AppCompatActivity {
 
     // Get username and password in string format
-    String username;
+    String email;
     String password;
 
     // Click forgot password (to reset)
@@ -42,66 +42,51 @@ public class Home extends AppCompatActivity {
         // After pressed Login
         btn_login.setOnClickListener(view -> {
             // Get the username (in lowercase) and password given by the user
-            username = ((EditText)findViewById(R.id.enter_email)).getText().toString().toLowerCase();
+            email = ((EditText)findViewById(R.id.enter_email)).getText().toString().toLowerCase();
             password = ((EditText) findViewById(R.id.enter_password)).getText().toString();
-            // Use Bundle to get data from another activity
-            // Try & Catch will prevent app from crashing when try to login without registering
-            try {
-                Bundle bundle = getIntent().getExtras();
-                // Get email and password from SignUp activity using Bundle
-                String email = bundle.getString("email");
-                String pw = bundle.getString("password");
 
-//                Communication home = new Communication();
-//                Connection homeCon = home.getConnection();
-//                String checkPassword = "";
-//                String error = "";
-//
-//                try{
-//                    if(homeCon == null){
-//                        System.out.println("Check Connection");
-//                    }
-//                    else{
-//                        String query = "SELECT user_password FROM tblUser WHERE user_email = " + username;
-//                        Statement stmt = homeCon.createStatement();
-//                        ResultSet rs = stmt.executeQuery(query);
-//
-//                        if(rs.next()){
-//                            //the variable to compare
-//                            checkPassword = rs.getString("user_password");
-//                            System.out.printf(checkPassword);
-//                            //Toast.makeText(this, checkPassword, Toast.LENGTH_SHORT).show();
-//                        }
-//                        else{
-//                            error = "invalid query";
-//                        }
-//
-//                        homeCon.close();
-//                    }
-//                }catch (SQLException throwables) {
-//                    throwables.printStackTrace();
-//                    Log.d("sql error", error);
-//                }
+            // Connect to the database
+            Communication home = new Communication();
+            Connection homeCon = home.getConnection();
+            String checkPassword;
+            String checkEmail;
+            String error = "";
 
-                // Tell user that they cannot have empty username or password
-                if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
-                    Toast.makeText(this, "Email and password can't be empty", Toast.LENGTH_LONG).show();
+            try{
+                if(homeCon == null){
+                    System.out.println("Check Connection");
+                }
+                else{
+                    //String query = "SELECT user_password FROM tblUser WHERE user_email = '" + email + "'";
+                    String query = "SELECT user_email, user_password FROM tblUser";
+                    Statement stmt = homeCon.createStatement();
+                    ResultSet rs = stmt.executeQuery(query);
+                    Boolean findEmail = false;
+                    String output;
+                    while(rs.next()){
+                        //the variable to compare
+                        checkPassword = rs.getString("user_password");
+                        checkEmail = rs.getString("user_email");
+                        // Check to see if email matches with the one in the database
+                        if(checkEmail.equals(email)) {
+                            findEmail = true;
+                        }
+                        else {
+                            continue;
+                        }
+                        // Check to see if the password matches with the one in the database
+                        if (checkPassword.equals(password)) {
+                            Intent intent = new Intent(this, User.class);
+                            startActivity(intent);
+                        }
+                    }
+                    Toast.makeText(this, output = findEmail ? "Login!" : "User not found", Toast.LENGTH_SHORT).show();
+                    homeCon.close();
                 }
 
-                // Show message telling the user they logged in successfully
-                // Can login only if match with sign up data
-                else if (username.equals(email) && password.equals(pw)) {
-                    Toast.makeText(this, username + " login successfully", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(this, User.class);
-                    startActivity(intent);
-                }
-                // Show error message if username/password is incorrect
-                else {
-                    Toast.makeText(this, "INVALID credentials", Toast.LENGTH_LONG).show();
-                }
-            }
-            catch (Exception e){
-                Toast.makeText(this, "User must register first", Toast.LENGTH_LONG).show();
+            }catch (SQLException throwables) {
+                throwables.printStackTrace();
+                Log.d("sql error", error);
             }
         });
 

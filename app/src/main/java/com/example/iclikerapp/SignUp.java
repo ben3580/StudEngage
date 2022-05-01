@@ -4,14 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.iclikerapp.Server.Communication;
 import com.example.iclikerapp.Server.Login;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Locale;
 
 public class SignUp extends AppCompatActivity {
@@ -35,17 +41,34 @@ public class SignUp extends AppCompatActivity {
             String email = new_username.toLowerCase();
             String pw = new_password;
 
-            // Store email and password using Bundle (with keys that mapped to them)
-            Intent intent = new Intent(this, Home.class);
-            Bundle bundle = new Bundle();
-            bundle.putString("email", email);
-            bundle.putString("password", pw);
-            intent.putExtras(bundle);
-            SignUp.this.finish();
-            startActivity(intent);
+            // Get connection
+            Communication home = new Communication();
+            Connection SignUpCon = home.getConnection();
+            String error = "";
+            int new_isProfessor = 0;
+
+            try{
+                if(SignUpCon == null){
+                    System.out.println("Check Connection");
+                }
+                else{
+                    String query = "INSERT INTO tblUser (user_email, user_password, user_isProfessor) Values ('"  + email + "', '" + pw + "', " + new_isProfessor + ");";
+                    // statement is used for the command we run to the sql
+                    Statement stmt = SignUpCon.createStatement();
+                    // executeQuery(String) will execute the query with the command string
+                    stmt.executeQuery(query);
+                    SignUpCon.close();
+                }
+            }catch (SQLException throwables) {
+                throwables.printStackTrace();
+                Log.d("sql error", error);
+            }
 
             // Show the name of the user that has been created
             Toast.makeText(this, new_username + " created!", Toast.LENGTH_LONG).show();
+            // Go back to login page
+            Intent intent = new Intent(this, Login.class);
+            startActivity(intent);
         });
 
         // Function of Sign in button (go back to Home screen)

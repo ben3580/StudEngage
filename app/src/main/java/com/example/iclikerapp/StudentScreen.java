@@ -26,11 +26,11 @@ public class StudentScreen extends AppCompatActivity {
                 // Get the input code from the user and store it as string
                 String input_code = ((EditText) findViewById(R.id.input_code)).getText().toString();
                 // Retrieve the code generated
-                Bundle bundle = getIntent().getExtras();
-                String class_code = bundle.getString("class_code");
+//                Bundle bundle = getIntent().getExtras();
+//                String class_code = bundle.getString("class_code");
 
                 // Join class if the code is valid and matched
-                if (input_code.equals(class_code)) {
+                if (input_code.equals("202122")) {
                     Intent intent = new Intent(this, StudentClassroom.class);
                     startActivity(intent);
                 } else {

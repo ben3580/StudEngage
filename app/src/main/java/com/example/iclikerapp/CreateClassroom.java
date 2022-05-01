@@ -13,8 +13,8 @@ public class CreateClassroom extends AppCompatActivity {
     // Instantiate random
     Random rand = new Random();
     // Generate a random code for the classroom
-    int rand_code = rand.nextInt(30000) + 20000;
-    String class_code = Integer.toString(rand_code);
+//    int rand_code = rand.nextInt(30000) + 20000;
+//    String class_code = Integer.toString(rand_code);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,17 +23,12 @@ public class CreateClassroom extends AppCompatActivity {
 
         TextView code = (TextView) findViewById(R.id.view_code);
         // Show code on the screen
-        code.setText("" + class_code);
+        code.setText("202122");
 
-        // Function of Back button
+        // Function of test code button
         Button btn_testCode = (Button)findViewById(R.id.btn_testCode);
         btn_testCode.setOnClickListener(view -> {
-            // Store the generated code using bundle
             Intent intent = new Intent(this, StudentScreen.class);
-            Bundle bundle = new Bundle();
-            bundle.putString("class_code", class_code);
-            intent.putExtras(bundle);
-            CreateClassroom.this.finish();
             startActivity(intent);
         });
     }

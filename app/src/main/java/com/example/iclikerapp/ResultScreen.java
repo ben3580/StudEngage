@@ -21,7 +21,7 @@ public class ResultScreen extends AppCompatActivity {
         // The button which takes the student back to the Student screen
         Button btn_goHome = (Button)findViewById(R.id.btn_goHome);
         btn_goHome.setOnClickListener(view -> {
-            Intent intent = new Intent(this, StudentScreen.class);
+            Intent intent = new Intent(this, User.class);
             startActivity(intent);
         });
 

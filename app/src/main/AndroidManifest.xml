@@ -14,7 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IClikerApp">
         <activity
-            android:name=".addMoreQAs"
+            android:name=".ShowClassroom"
+            android:exported="false"
+            android:label="My classes" />
+        <activity
+            android:name=".InstructorClassroom"
             android:exported="false" />
         <activity
             android:name=".ResultScreen"
@@ -22,26 +26,18 @@
         <activity
             android:name=".StudentClassroom"
             android:exported="false"
-            android:label="Student Classroom"/>
-
+            android:label="Student Classroom" />
         <activity
             android:name=".ResetPassword"
             android:exported="false"
-            android:label="Forgot Password"/>
-
-        <activity
-            android:name=".CreateQuestion"
-            android:exported="false"
-            android:label="Create MC Questions"/>
-
+            android:label="Forgot Password" />
         <activity
             android:name=".CreateClassroom"
             android:exported="false" />
         <activity
             android:name=".InstructorScreen"
             android:exported="false"
-            android:label="Instructor"/>
-
+            android:label="Instructor" />
         <activity
             android:name=".User"
             android:exported="false" />
